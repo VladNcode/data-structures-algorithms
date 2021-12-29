@@ -10,6 +10,19 @@ const array6 = [];
 const arr1 = ['a', 'b', 'c', 'e'];
 const arr2 = ['d', 'e', 'f', 'j'];
 
+//O(a*b)
+//O(1) - Space Complexity
+// function containsCommonItem(arr1, arr2) {
+//   for (let i=0; i < arr1.length; i++) {
+//     for ( let j=0; j < arr2.length; j++) {
+//       if(arr1[i] === arr2[j]) {
+//         return true;
+//       }
+//     }
+//   }
+//   return false
+// }
+
 // const findCommonItems = (array1, array2) => {
 //   const filteredArray = [...new Set([...array1, ...array2])];
 //   const obj = {};
@@ -25,18 +38,21 @@ const arr2 = ['d', 'e', 'f', 'j'];
 //   return false;
 // };
 
+//O(a + b) Time Complexity
+//O(a) Space Complexity
+
 const findCommonItems = (arr1, arr2) => {
   const obj = {};
   arr1.forEach(el => (obj[el] = true));
   return arr2.find(el => obj[el] === true) ? true : false;
 };
 
-console.log(findCommonItems(arr1, arr2));
-
-const findCommonItems = (arr1, arr2) => {
+const findCommonItems2 = (arr1, arr2) => {
   const obj = {};
   arr1.forEach(el => (obj[el] = true));
   return arr2.some(el => obj[el] === true);
 };
 
-console.log(findCommonItems(arr1, arr2));
+const findCommonItems3 = (arr1, arr2) => {
+  return arr1.some(item => arr2.includes(item));
+};
