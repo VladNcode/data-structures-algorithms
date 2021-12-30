@@ -1,6 +1,5 @@
 const hasPairsEqSum = function (arr, sum) {
   const set = new Set();
-
   for (let i = 0; i < arr.length; i++) {
     if (set.has(arr[i])) return true;
 
@@ -9,7 +8,21 @@ const hasPairsEqSum = function (arr, sum) {
   return false;
 };
 
-console.log(hasPairsEqSum([5, 2, 9, 9, 9], 8));
+console.log(hasPairsEqSum([1, -2, 3, 0, -3], 0));
+
+const hasPairsEqSumObj = function (arr, sum) {
+  const obj = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (obj[arr[i]]) {
+      return true;
+    }
+    obj[sum - arr[i]] = arr[i];
+  }
+  return false;
+};
+
+// console.log(hasPairsEqSumObj([1, 2, 3, 4, 5], 9));
 
 const hasPairsEqSumDummy = function (arr, sum) {
   for (let i = 0; i < arr.length - 1; i++) {
@@ -20,4 +33,4 @@ const hasPairsEqSumDummy = function (arr, sum) {
   return false;
 };
 
-console.log(hasPairsEqSumDummy([3, 3, 3, 4, 3], 4));
+// console.log(hasPairsEqSumDummy([1, -2, 3, 0, 5], 0));
