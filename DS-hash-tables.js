@@ -47,7 +47,11 @@ class HashTable {
     const keysArray = [];
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i]) {
-        this.data[i].forEach(key => keysArray.push(key[0]));
+        if (this.data[i].length > 1) {
+          this.data[i].forEach(key => keysArray.push(key[0]));
+        } else {
+          keysArray.push(this.data[i][0]);
+        }
       }
     }
     return keysArray;
@@ -57,7 +61,11 @@ class HashTable {
     const valuesArray = [];
     for (let i = 0; i < this.data.length; i++) {
       if (this.data[i]) {
-        this.data[i].forEach(key => valuesArray.push(key[1]));
+        if (this.data[i].length > 1) {
+          this.data[i].forEach(value => valuesArray.push(value[1]));
+        } else {
+          valuesArray.push(this.data[i][1]);
+        }
       }
     }
     return valuesArray;
