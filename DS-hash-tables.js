@@ -42,14 +42,39 @@ class HashTable {
     }
     return undefined;
   } // O(1) if no collision
+
+  keys() {
+    const keysArray = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        for (let j = 0; j < this.data[i].length; j++) {
+          keysArray.push(this.data[i][j][0]);
+        }
+      }
+    }
+    return keysArray;
+  }
+
+  values() {
+    const valuesArray = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        for (let j = 0; j < this.data[i].length; j++) {
+          valuesArray.push(this.data[i][j][1]);
+        }
+      }
+    }
+    return valuesArray;
+  }
 }
 
 const myHashTable = new HashTable(50);
 myHashTable.set('grapes', 10000);
-// myHashTable.get('grapes');
 myHashTable.set('apples', 9);
-// myHashTable.get('apples');
+myHashTable.set('oranges', 2);
 
 // console.log(myHashTable);
-console.log(myHashTable.get('grapes'));
-console.log(myHashTable.get('apples'));
+// console.log(myHashTable.get('grapes'));
+// console.log(myHashTable.get('apples'));
+console.log(myHashTable.keys());
+console.log(myHashTable.values());
