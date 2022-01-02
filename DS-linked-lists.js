@@ -27,10 +27,6 @@ class LinkedList {
 
   append(value) {
     const newNode = new Node(value);
-    // const newNode = {
-    //   value,
-    //   next: null,
-    // };
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
@@ -39,13 +35,8 @@ class LinkedList {
 
   prepend(value) {
     const newNode = new Node(value);
-    // const newNode = {
-    //   value,
-    //   next: null,
-    // };
-    const curr = this.head;
+    newNode.next = this.head;
     this.head = newNode;
-    this.head.next = curr;
     this.length++;
     return this;
   }
@@ -60,60 +51,63 @@ class LinkedList {
     return array;
   }
 
+  goToIndex(index) {
+    let counter = 0;
+    let currentNode = this.head;
+    while (counter !== index) {
+      counter++;
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
   insert(index, value) {
+    if (index < 0) {
+      return console.log('Index is incorrect');
+    }
+
     if (index >= this.length) {
       this.append(value);
-      this.length++;
-      return this.printList();
-    }
-    if (index === 0) {
-      this.prepend(value);
-      this.length++;
       return this.printList();
     }
 
+    if (index === 0) {
+      this.prepend(value);
+      return this.printList();
+    }
     const newNode = new Node(value);
-    const leader = this.traverseToIndex(index - 1);
-    const finisher = this.traverseToIndex(index);
-    newNode.next = finisher;
+    const leader = this.goToIndex(index - 1);
+    const finisher = this.goToIndex(index);
     leader.next = newNode;
+    newNode.next = finisher;
     this.length++;
+    return this.printList();
   }
 
   remove(index) {
-    if (index > this.length - 1) {
-      return console.log('There is no item with this index');
+    if (index < -1 || index > this.length - 1) {
+      return console.log('Index is incorrect');
+    }
+
+    if (index === 0) {
+      this.head = this.goToIndex(1);
+      this.length--;
+      return this.printList();
     }
 
     if (index === this.length - 1 || index === -1) {
-      this.tail = this.traverseToIndex(this.length - 2);
+      this.tail = this.goToIndex(this.length - 2);
       this.tail.next = null;
       this.length--;
       return this.printList();
     }
-    if (index === 0) {
-      this.head = this.traverseToIndex(1);
-      this.length--;
-      return this.printList();
-    }
 
-    const leader = this.traverseToIndex(index - 1);
-    const finisher = this.traverseToIndex(index + 1);
+    const leader = this.goToIndex(index - 1);
+    const finisher = this.goToIndex(index + 1);
     leader.next = finisher;
     this.length--;
 
     return this.printList();
-  }
-
-  traverseToIndex(index) {
-    let counter = 0;
-    let currentNode = this.head;
-
-    while (counter !== index) {
-      currentNode = currentNode.next;
-      counter++;
-    }
-    return currentNode;
   }
 }
 
@@ -123,9 +117,13 @@ myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.append(32);
 myLinkedList.prepend(55);
-myLinkedList.insert(2, 99);
-myLinkedList.remove(2);
+myLinkedList.insert(3, 99);
+myLinkedList.insert(20, 99);
+
 myLinkedList.remove(0);
 myLinkedList.remove(-1);
-console.log(myLinkedList.printList());
+myLinkedList.remove(2);
+myLinkedList.remove(-1);
+
 // console.log(myLinkedList);
+console.log(myLinkedList.printList());
