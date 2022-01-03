@@ -14,7 +14,6 @@
 class Node {
   constructor(value) {
     this.value = value;
-    this.prev = null;
     this.next = null;
   }
 }
@@ -110,6 +109,21 @@ class LinkedList {
 
     return this.printList();
   }
+
+  reverse() {
+    let currentNode = this.tail;
+
+    for (let i = this.length - 1; i > 0; i--) {
+      let nextNode = this.goToIndex(i - 1);
+      nextNode.next = null;
+      currentNode.next = nextNode;
+      currentNode = nextNode;
+    }
+
+    this.head = this.tail;
+    this.tail = this.goToIndex(this.length - 1);
+    return this.printList();
+  }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -124,7 +138,8 @@ myLinkedList.insert(20, 99);
 myLinkedList.remove(0);
 myLinkedList.remove(-1);
 myLinkedList.remove(2);
-myLinkedList.remove(-1);
 
-// console.log(myLinkedList);
-console.log(myLinkedList.printList());
+myLinkedList.reverse();
+
+console.log(myLinkedList);
+// console.log(myLinkedList.printList());
