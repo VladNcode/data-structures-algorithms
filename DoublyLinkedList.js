@@ -1,33 +1,15 @@
-// let myLinkedList = {
-//   head: {
-//     value: 10,
-//     next: {
-//       value: 5,
-//       next: {
-//         value: 16,
-//         next: null,
-//       },
-//     },
-//   },
-// };
+//! DOUBLY LINKED LIST
 
-class Node {
+class DoublyLinkedList {
   constructor(value) {
-    this.value = value;
-    this.prev = null;
-    this.next = null;
-  }
-}
-
-class LinkedList {
-  constructor(value) {
-    this.head = { value, next: null };
+    this.head = { value, prev: null, next: null };
     this.tail = this.head;
     this.length = 1;
   }
 
   append(value) {
     const newNode = new Node(value);
+    newNode.prev = this.tail;
     this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
@@ -37,6 +19,7 @@ class LinkedList {
   prepend(value) {
     const newNode = new Node(value);
     newNode.next = this.head;
+    this.head.prev = newNode;
     this.head = newNode;
     this.length++;
     return this;
@@ -81,6 +64,8 @@ class LinkedList {
     const finisher = this.goToIndex(index);
     leader.next = newNode;
     newNode.next = finisher;
+    finisher.prev = newNode;
+    newNode.prev = leader;
     this.length++;
     return this.printList();
   }
@@ -92,12 +77,14 @@ class LinkedList {
 
     if (index === 0) {
       this.head = this.goToIndex(1);
+      this.head.prev = null;
       this.length--;
       return this.printList();
     }
 
     if (index === this.length - 1 || index === -1) {
       this.tail = this.goToIndex(this.length - 2);
+      this.tail.prev = this.goToIndex(this.length - 3);
       this.tail.next = null;
       this.length--;
       return this.printList();
@@ -106,25 +93,9 @@ class LinkedList {
     const leader = this.goToIndex(index - 1);
     const finisher = this.goToIndex(index + 1);
     leader.next = finisher;
+    finisher.prev = leader;
     this.length--;
 
     return this.printList();
   }
 }
-
-const myLinkedList = new LinkedList(10);
-
-myLinkedList.append(5);
-myLinkedList.append(16);
-myLinkedList.append(32);
-myLinkedList.prepend(55);
-myLinkedList.insert(3, 99);
-myLinkedList.insert(20, 99);
-
-myLinkedList.remove(0);
-myLinkedList.remove(-1);
-myLinkedList.remove(2);
-myLinkedList.remove(-1);
-
-// console.log(myLinkedList);
-console.log(myLinkedList.printList());
