@@ -126,9 +126,10 @@ class LinkedList {
   }
 
   reverse2() {
-    let first = this.head;
     this.tail = this.head;
+    let first = this.head;
     let second = first.next;
+
     while (second) {
       let temp = second.next;
       second.next = first;
@@ -157,5 +158,5 @@ myLinkedList.remove(2);
 
 myLinkedList.reverse2();
 
-console.log(myLinkedList);
-// console.log(myLinkedList.printList());
+// console.log(myLinkedList);
+console.log(myLinkedList.printList());
