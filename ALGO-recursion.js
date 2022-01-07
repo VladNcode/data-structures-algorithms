@@ -19,17 +19,57 @@ function inception() {
 */
 
 function findFactorialRecursive(number) {
-  if (number === 0) return 1;
+  if (number <= 1) return 1;
   return number * findFactorialRecursive(number - 1);
 }
 
 function findFactorialIterative(number) {
-  let answer = number;
+  if (number <= 1) return 1;
+
   for (let i = number - 1; i > 1; i--) {
-    answer = answer * i;
+    number *= i;
   }
-  return answer;
+
+  return number;
 }
 
-// console.log(findFactorialIterative(1));
-console.log(findFactorialRecursive(0));
+// console.log(findFactorialIterative(5));
+// console.log(findFactorialRecursive(0));
+
+function fibonacciIterative(n) {
+  let a = 0;
+  let b = 1;
+  let c = a + b;
+
+  for (let i = 2; i < n; i++) {
+    a = b;
+    b = c;
+    c = a + b;
+  }
+
+  return c;
+}
+
+function fibonacciRecursive(n) {
+  debugger;
+  if (n <= 1) return n;
+  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+
+// console.log(fibonacciIterative(4));
+// console.log(fibonacciRecursive(4));
+
+// 0 1 1 2 3 5 8 13 21 34 55 89 144 233
+
+/*
+                            5
+                          fib(5)
+                    3               2
+                  fib(4)    +     fib(3)
+                2        1      1        1
+             fib(3) + fib(2)  fib(2) + fib(1)        
+           1     1    1    0   1   0
+          f(2)+f(1) f(1)+f(0) f(1)+f(0)
+        1   0
+      f(1)+f(0)
+*/
