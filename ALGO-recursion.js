@@ -73,3 +73,35 @@ function fibonacciRecursive(n) {
         1   0
       f(1)+f(0)
 */
+
+//Implement a function that reverses a string using iteration...and then recursion!
+
+function reverseString(str) {
+  debugger;
+  if (str === '') {
+    return '';
+  } else {
+    return reverseString(str.substring(1)) + str.charAt(0);
+  }
+}
+
+console.log(reverseString('yoyo mastery'));
+//should return: 'yretsam oyoy'
+
+// function revStr(str) {
+//   let fin = '';
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     fin += str[i];
+//   }
+//   return fin;
+// }
+
+function revStr(str) {
+  let fin = '';
+  for (let i = 0; i < str.length; i++) {
+    fin = str.charAt(i) + fin;
+  }
+  return fin;
+}
+
+console.log(revStr('yoyo mastery'));
