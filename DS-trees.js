@@ -189,4 +189,24 @@ const traverse = function (node) {
   return tree;
 };
 
-console.log(JSON.stringify(traverse(tree.root)));
+// console.log(JSON.stringify(traverse(tree.root)));
+
+// let str = `
+// {"value":9,"left":{"value":5,"left":{"value":1,"left":null,"right":null},"right":{"value":6,"left":null,"right":{"value":7,"left":null,"right":null}}},"right":{"value":20,"left":{"value":15,"left":{"value":13,"left":null,"right":null},"right"
+// :{"value":17,"left":null,"right":null}},"right":{"value":171,"left":{"value":160,"left":{"value":30,"left":null,"right":{
+// "value":140,"left":null,"right":null}},"right":{"value":165,"left":null,"right":null}},"right":{"value":185,"left":null,"
+// right":{"value":190,"left":null,"right":{"value":220,"left":null,"right":null}}}}}}
+// `;
+
+// let ss = '';
+// str = str.replace(/:[0-9]\d*/g, s => (ss += s));
+// str = str.replace(/:\d*,/g, s => (ss += s.replace(/:/g, '')));
+// console.log(ss.split(','));
+
+// console.log(str);
+// console.log(
+//   ss
+//     .split(':')
+//     .map(Number)
+//     .reduce((acc, num) => acc + num, 0)
+// );
