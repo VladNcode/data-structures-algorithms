@@ -179,8 +179,13 @@ tree.remove(180);
 tree.insert(165);
 tree.remove(2);
 // console.log(tree.remove(500));
-
 // console.log(tree.lookup(170));
+
+const count = function (tree) {
+  if (!tree) return 0;
+  return tree.value + count(tree.left) + count(tree.right);
+};
+// console.log(count(tree.root));
 
 const traverse = function (node) {
   const tree = { value: node.value };
@@ -189,7 +194,7 @@ const traverse = function (node) {
   return tree;
 };
 
-// console.log(JSON.stringify(traverse(tree.root)));
+console.log(JSON.stringify(traverse(tree.root)));
 
 // let str = `
 // {"value":9,"left":{"value":5,"left":{"value":1,"left":null,"right":null},"right":{"value":6,"left":null,"right":{"value":7,"left":null,"right":null}}},"right":{"value":20,"left":{"value":15,"left":{"value":13,"left":null,"right":null},"right"
@@ -199,11 +204,11 @@ const traverse = function (node) {
 // `;
 
 // let ss = '';
-// str = str.replace(/:[0-9]\d*/g, s => (ss += s));
 // str = str.replace(/:\d*,/g, s => (ss += s.replace(/:/g, '')));
 // console.log(ss.split(','));
-
 // console.log(str);
+
+// str = str.replace(/:[0-9]\d*/g, s => (ss += s));
 // console.log(
 //   ss
 //     .split(':')
