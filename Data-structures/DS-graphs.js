@@ -55,3 +55,7 @@ myGraph.showConnections();
 // 4-->3 2 5
 // 5-->4 6
 // 6-->5
+
+// If we want to find a shortest path in a weighted graph
+// if negative numbers = Bellman-Ford algo
+// else Dijkstra

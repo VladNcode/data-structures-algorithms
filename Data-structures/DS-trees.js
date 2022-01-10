@@ -263,13 +263,13 @@ class BinarySearchTree {
 }
 
 const tree = new BinarySearchTree();
-tree.insert(9);
-tree.insert(4);
-tree.insert(6);
-tree.insert(20);
-tree.insert(170);
-tree.insert(15);
-tree.insert(1);
+// tree.insert(9);
+// tree.insert(4);
+// tree.insert(6);
+// tree.insert(20);
+// tree.insert(170);
+// tree.insert(15);
+// tree.insert(1);
 
 //          9
 //     4        20
@@ -293,7 +293,7 @@ const traverse = function (node) {
   return tree;
 };
 
-// console.log(JSON.stringify(traverse(tree.root)));
+console.log(JSON.stringify(traverse(tree.root)));
 
 // let str = `
 // {"value":9,"left":{"value":5,"left":{"value":1,"left":null,"right":null},"right":{"value":6,"left":null,"right":{"value":7,"left":null,"right":null}}},"right":{"value":20,"left":{"value":15,"left":{"value":13,"left":null,"right":null},"right"
