@@ -148,36 +148,61 @@ class BinarySearchTree {
       }
     }
   }
+
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    const queue = [];
+    const list = [];
+    let counter = 0;
+
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+
+    return list;
+  }
+
+  RecursivebreadthFirstSearch(queue, list) {
+    if (!queue.length) {
+      return list;
+    }
+
+    let currentNode = queue.shift();
+    list.push(currentNode.value);
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+
+    return this.RecursivebreadthFirstSearch(queue, list);
+  }
 }
 
 const tree = new BinarySearchTree();
 tree.insert(9);
 tree.insert(4);
 tree.insert(6);
-tree.insert(5);
-tree.insert(7);
-tree.insert(2);
 tree.insert(20);
 tree.insert(170);
 tree.insert(15);
 tree.insert(1);
-tree.insert(150);
-tree.insert(30);
-tree.insert(180);
-tree.insert(190);
-tree.insert(160);
-tree.insert(140);
-tree.insert(171);
-tree.remove(170);
-tree.remove(150);
-tree.remove(4);
-tree.insert(220);
-tree.insert(185);
-tree.insert(13);
-tree.insert(17);
-tree.remove(180);
-tree.insert(165);
-tree.remove(2);
+
+console.log(tree.breadthFirstSearch());
+// console.log(tree.RecursivebreadthFirstSearch([tree.root], []));
 // console.log(tree.remove(500));
 // console.log(tree.lookup(170));
 
@@ -194,7 +219,7 @@ const traverse = function (node) {
   return tree;
 };
 
-console.log(JSON.stringify(traverse(tree.root)));
+// console.log(JSON.stringify(traverse(tree.root)));
 
 // let str = `
 // {"value":9,"left":{"value":5,"left":{"value":1,"left":null,"right":null},"right":{"value":6,"left":null,"right":{"value":7,"left":null,"right":null}}},"right":{"value":20,"left":{"value":15,"left":{"value":13,"left":null,"right":null},"right"
