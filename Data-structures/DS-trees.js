@@ -149,11 +149,41 @@ class BinarySearchTree {
     }
   }
 
+  countValuesIterative() {
+    let currentNode = this.root;
+    const queue = [];
+    let result = 0;
+
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      result += currentNode.value;
+
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+
+    return result;
+  }
+
+  countValuesRecursive(node) {
+    if (!node) return 0;
+
+    return (
+      node.value + this.countValuesRecursive(node.left) + this.countValuesRecursive(node.right)
+    );
+  }
+
   breadthFirstSearch() {
     let currentNode = this.root;
     const queue = [];
     const list = [];
-    let counter = 0;
 
     queue.push(currentNode);
 
@@ -247,20 +277,14 @@ tree.insert(1);
 // InOrder = [1, 4, 6, 9, 15, 20, 170]
 // PreOrder = [9, 4, 1, 6, 20, 15, 170]
 // PostOrder = [1, 6, 4, 15, 170, 20, 9]
-
-console.log(tree.DFSInorder(tree.root, []));
-console.log(tree.DFSPreorder(tree.root, []));
-console.log(tree.DFSPostorder(tree.root, []));
+// console.log(tree.DFSInorder(tree.root, []));
+// console.log(tree.DFSPreorder(tree.root, []));
+// console.log(tree.DFSPostorder(tree.root, []));
 // console.log(tree.breadthFirstSearch());
 // console.log(tree.RecursivebreadthFirstSearch([tree.root], []));
-// console.log(tree.remove(500));
-// console.log(tree.lookup(170));
 
-const count = function (tree) {
-  if (!tree) return 0;
-  return tree.value + count(tree.left) + count(tree.right);
-};
-// console.log(count(tree.root));
+// console.log(tree.countValuesIterative());
+// console.log(tree.countValuesRecursive(tree.root));
 
 const traverse = function (node) {
   const tree = { value: node.value };
