@@ -18,4 +18,4 @@ const bubbleSort = function (arr) {
   return arr;
 };
 
-// console.log(bubbleSort(numbers));
+console.log(bubbleSort(numbers));

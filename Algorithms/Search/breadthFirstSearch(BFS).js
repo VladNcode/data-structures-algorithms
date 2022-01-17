@@ -2,13 +2,17 @@ function breadthFirstSearch() {
   let currentNode = this.root;
   const queue = [];
   const list = [];
-  let counter = 0;
+  let counter = 1;
 
   queue.push(currentNode);
 
   while (queue.length > 0) {
     currentNode = queue.shift();
     list.push(currentNode.value);
+
+    if (currentNode.left || currentNode.right) {
+      counter++;
+    }
 
     if (currentNode.left) {
       queue.push(currentNode.left);
@@ -19,7 +23,7 @@ function breadthFirstSearch() {
     }
   }
 
-  return list;
+  return counter;
 }
 
 function RecursivebreadthFirstSearch(queue, list) {

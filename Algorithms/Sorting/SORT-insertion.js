@@ -30,4 +30,4 @@ const insertionSort = function (arr) {
 // 	}
 // }
 
-// console.log(insertionSort(numbers));
+console.log(insertionSort(numbers));
