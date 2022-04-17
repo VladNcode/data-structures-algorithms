@@ -16,6 +16,7 @@ function equal(s, t) {
 function move(string, pointer) {
 	let backcount = 2;
 	while (backcount > 0) {
+		// move left
 		pointer--;
 		backcount--;
 		if (string[pointer] === '#') {
@@ -31,19 +32,24 @@ function eq2(s, t) {
 	let p2 = t.length - 1;
 
 	while (p1 >= 0 || p2 >= 0) {
+		// while both pointers is not at element 0
 		if (s[p1] === '#' || t[p2] === '#') {
-			if (s[p1] === '#') p1 = move(s, p1);
-			if (t[p2] === '#') p2 = move(t, p2);
+			// check if any element is === #
+			if (s[p1] === '#') p1 = move(s, p1); // move left
+			if (t[p2] === '#') p2 = move(t, p2); // move left
 		} else {
 			if (s[p1] !== t[p2]) {
+				// if elements are not equal return false
 				return false;
 			} else {
+				// if they are equal - move on
 				p1--;
 				p2--;
 			}
 		}
 	}
 
+	// if all elements are equal return true
 	return true;
 }
 
