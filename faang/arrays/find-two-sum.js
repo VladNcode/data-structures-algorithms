@@ -15,14 +15,14 @@
 // }
 
 function findTwoSum(nums, target) {
-  const hm = {};
+	const hm = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    if (hm[nums[i]] !== undefined) return [hm[nums[i]], i];
-    hm[target - nums[i]] = i;
-  }
+	for (let i = 0; i < nums.length; i++) {
+		if (hm[nums[i]] !== undefined) return [hm[nums[i]], i];
+		hm[target - nums[i]] = i;
+	}
 
-  return null;
+	return null;
 }
 
 console.log(undefined < 1);

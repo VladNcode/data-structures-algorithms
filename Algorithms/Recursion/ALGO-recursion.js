@@ -1,13 +1,13 @@
 let counter = 0;
 
 function inception() {
-  console.log(counter);
-  if (counter > 3) {
-    return 'done';
-  }
+	console.log(counter);
+	if (counter > 3) {
+		return 'done';
+	}
 
-  counter++;
-  return inception();
+	counter++;
+	return inception();
 }
 
 // console.log(inception());
@@ -19,41 +19,41 @@ function inception() {
 */
 
 function findFactorialRecursive(number) {
-  if (number <= 1) return 1;
-  return number * findFactorialRecursive(number - 1);
+	if (number <= 1) return 1;
+	return number * findFactorialRecursive(number - 1);
 }
 
 function findFactorialIterative(number) {
-  if (number <= 1) return 1;
+	if (number <= 1) return 1;
 
-  for (let i = number - 1; i > 1; i--) {
-    number *= i;
-  }
+	for (let i = number - 1; i > 1; i--) {
+		number *= i;
+	}
 
-  return number;
+	return number;
 }
 
 // console.log(findFactorialIterative(5));
 // console.log(findFactorialRecursive(0));
 
 function fibonacciIterative(n) {
-  let a = 0;
-  let b = 1;
-  let c = a + b;
+	let a = 0;
+	let b = 1;
+	let c = a + b;
 
-  for (let i = 2; i < n; i++) {
-    a = b;
-    b = c;
-    c = a + b;
-  }
+	for (let i = 2; i < n; i++) {
+		a = b;
+		b = c;
+		c = a + b;
+	}
 
-  return c;
+	return c;
 }
 
 function fibonacciRecursive(n) {
-  debugger;
-  if (n <= 1) return n;
-  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+	debugger;
+	if (n <= 1) return n;
+	return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 }
 
 // console.log(fibonacciIterative(4));
@@ -77,11 +77,11 @@ function fibonacciRecursive(n) {
 //Implement a function that reverses a string using iteration...and then recursion!
 
 function reverseStringRecursion(str) {
-  if (str === '') {
-    return '';
-  } else {
-    return reverseStringRecursion(str.substring(1)) + str.charAt(0);
-  }
+	if (str === '') {
+		return '';
+	} else {
+		return reverseStringRecursion(str.substring(1)) + str.charAt(0);
+	}
 }
 
 console.log(reverseStringRecursion('yoyo mastery'));
@@ -96,12 +96,12 @@ console.log(reverseStringRecursion('yoyo mastery'));
 // }
 
 function revStr(str) {
-  let fin = '';
-  for (let i = 0; i < str.length; i++) {
-    // fin = str.charAt(i) + fin;
-    fin = str[i] + fin;
-  }
-  return fin;
+	let fin = '';
+	for (let i = 0; i < str.length; i++) {
+		// fin = str.charAt(i) + fin;
+		fin = str[i] + fin;
+	}
+	return fin;
 }
 
 console.log(revStr('yoyo mastery'));

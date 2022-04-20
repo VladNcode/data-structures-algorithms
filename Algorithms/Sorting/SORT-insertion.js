@@ -1,12 +1,12 @@
 const numbers = [99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0];
 
 const insertionSort = function (arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i; arr[j] < arr[j - 1]; j--) {
-      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
-    }
-  }
-  return arr;
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = i; arr[j] < arr[j - 1]; j--) {
+			[arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
+		}
+	}
+	return arr;
 };
 
 // function insertionSort(array) {

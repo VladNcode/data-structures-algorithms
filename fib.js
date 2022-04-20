@@ -1,12 +1,12 @@
 const fib = function () {
-  let cache = {};
-  return function betterFib(n) {
-    if (n < 2) return n;
-    if (cache[n]) return cache[n];
+	let cache = {};
+	return function betterFib(n) {
+		if (n < 2) return n;
+		if (cache[n]) return cache[n];
 
-    cache[n] = betterFib(n - 1) + betterFib(n - 2);
-    return cache[n];
-  };
+		cache[n] = betterFib(n - 1) + betterFib(n - 2);
+		return cache[n];
+	};
 };
 
 const test = fib();
@@ -14,17 +14,17 @@ const test = fib();
 // console.log(test(50));
 
 const factorial = function (n) {
-  if (n < 2) return 1;
-  return n * factorial(n - 1);
+	if (n < 2) return 1;
+	return n * factorial(n - 1);
 };
 
 // console.log(factorial(5));
 
 const reverseString = function (s) {
-  for (let i = 0, j = s.length - 1; i < j; i++, j--) {
-    [s[i], s[j]] = [s[j], s[i]];
-  }
-  return s;
+	for (let i = 0, j = s.length - 1; i < j; i++, j--) {
+		[s[i], s[j]] = [s[j], s[i]];
+	}
+	return s;
 };
 
 // console.log(reverseString(['f', 'o', 'o', 't', 'b', 'a', 'l', 'l']));
@@ -61,10 +61,10 @@ console.log(strrr.substring(3) + strrr.charAt(0));
 // };
 
 const revStr = function (s) {
-  debugger;
-  if (s === '') return '';
+	debugger;
+	if (s === '') return '';
 
-  return revStr(s.substring(1)) + s.charAt(0);
+	return revStr(s.substring(1)) + s.charAt(0);
 };
 
 // console.log(revStr('hello'));

@@ -7,47 +7,47 @@
 // PostOrder = [1, 6, 4, 15, 170, 20, 9]
 
 const traverseInOrder = function (node, list) {
-  // console.log(node.value);
-  if (node.left) {
-    traverseInOrder(node.left, list);
-  }
+	// console.log(node.value);
+	if (node.left) {
+		traverseInOrder(node.left, list);
+	}
 
-  list.push(node.value);
+	list.push(node.value);
 
-  if (node.right) {
-    traverseInOrder(node.right, list);
-  }
+	if (node.right) {
+		traverseInOrder(node.right, list);
+	}
 
-  return list;
+	return list;
 };
 
 const traversePreOrder = function (node, list) {
-  // console.log(node.value);
-  list.push(node.value);
+	// console.log(node.value);
+	list.push(node.value);
 
-  if (node.left) {
-    traversePreOrder(node.left, list);
-  }
+	if (node.left) {
+		traversePreOrder(node.left, list);
+	}
 
-  if (node.right) {
-    traversePreOrder(node.right, list);
-  }
+	if (node.right) {
+		traversePreOrder(node.right, list);
+	}
 
-  return list;
+	return list;
 };
 
 const traversePostOrder = function (node, list) {
-  // console.log(node.value);
+	// console.log(node.value);
 
-  if (node.left) {
-    traversePostOrder(node.left, list);
-  }
+	if (node.left) {
+		traversePostOrder(node.left, list);
+	}
 
-  if (node.right) {
-    traversePostOrder(node.right, list);
-  }
+	if (node.right) {
+		traversePostOrder(node.right, list);
+	}
 
-  list.push(node.value);
+	list.push(node.value);
 
-  return list;
+	return list;
 };

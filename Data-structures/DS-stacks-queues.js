@@ -1,67 +1,67 @@
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
+	constructor(value) {
+		this.value = value;
+		this.next = null;
+	}
 }
 
 class Stack {
-  constructor() {
-    this.top = null;
-    this.bottom = null;
-    this.length = 0;
-  }
+	constructor() {
+		this.top = null;
+		this.bottom = null;
+		this.length = 0;
+	}
 
-  push(value) {
-    const newNode = new Node(value);
-    newNode.next = this.top;
-    this.top = newNode;
+	push(value) {
+		const newNode = new Node(value);
+		newNode.next = this.top;
+		this.top = newNode;
 
-    if (this.length === 0) {
-      this.bottom = this.top;
-    }
+		if (this.length === 0) {
+			this.bottom = this.top;
+		}
 
-    this.length++;
-    return this;
-  }
+		this.length++;
+		return this;
+	}
 
-  peek(index = 0) {
-    if (index <= 0) {
-      return this.top.value;
-    }
-    if (index >= this.length) {
-      return this.bottom.value;
-    }
+	peek(index = 0) {
+		if (index <= 0) {
+			return this.top.value;
+		}
+		if (index >= this.length) {
+			return this.bottom.value;
+		}
 
-    let currentNode = this.top;
-    let counter = 0;
+		let currentNode = this.top;
+		let counter = 0;
 
-    while (counter !== index) {
-      counter++;
-      currentNode = currentNode.next;
-    }
+		while (counter !== index) {
+			counter++;
+			currentNode = currentNode.next;
+		}
 
-    return currentNode.value;
-  }
+		return currentNode.value;
+	}
 
-  pop() {
-    if (!this.top) {
-      return null;
-    }
+	pop() {
+		if (!this.top) {
+			return null;
+		}
 
-    if (this.top === this.bottom) {
-      this.bottom = null;
-    }
+		if (this.top === this.bottom) {
+			this.bottom = null;
+		}
 
-    this.top = this.top.next;
-    this.length--;
+		this.top = this.top.next;
+		this.length--;
 
-    return this;
-  }
+		return this;
+	}
 
-  isEmpty() {
-    return this.length === 0 ? console.log('Stack is empty') : console.log('Stack is not empty');
-  }
+	isEmpty() {
+		return this.length === 0 ? console.log('Stack is empty') : console.log('Stack is not empty');
+	}
 }
 
 const myStack = new Stack();
@@ -79,36 +79,36 @@ const myStack = new Stack();
 // google
 
 class StackArray {
-  constructor() {
-    this.top = null;
-    this.bottom = null;
-    this.array = [];
-  }
+	constructor() {
+		this.top = null;
+		this.bottom = null;
+		this.array = [];
+	}
 
-  push(value) {
-    const newNode = new Node(value);
-    if (this.array.length !== 0) {
-      newNode.next = this.array[this.array.length - 1];
-    } else {
-      this.bottom = newNode;
-    }
-    this.array.push(newNode);
-    this.top = newNode;
-    return this.array;
-  }
+	push(value) {
+		const newNode = new Node(value);
+		if (this.array.length !== 0) {
+			newNode.next = this.array[this.array.length - 1];
+		} else {
+			this.bottom = newNode;
+		}
+		this.array.push(newNode);
+		this.top = newNode;
+		return this.array;
+	}
 
-  pop() {
-    this.top = this.array[this.array.length - 1].next;
-    this.array.pop();
-    if (this.array.length === 0) {
-      this.bottom = null;
-    }
-    return this.array;
-  }
+	pop() {
+		this.top = this.array[this.array.length - 1].next;
+		this.array.pop();
+		if (this.array.length === 0) {
+			this.bottom = null;
+		}
+		return this.array;
+	}
 
-  peek() {
-    return this.array[this.array.length - 1];
-  }
+	peek() {
+		return this.array[this.array.length - 1];
+	}
 }
 
 // const myStackArray = new StackArray();
@@ -122,23 +122,23 @@ class StackArray {
 // console.log(myStackArray.peek());
 
 class StackArray2 {
-  constructor() {
-    this.array = [];
-  }
+	constructor() {
+		this.array = [];
+	}
 
-  peek() {
-    return this.array[this.array.length - 1];
-  }
+	peek() {
+		return this.array[this.array.length - 1];
+	}
 
-  push(value) {
-    this.array.push(value);
-    return this.array;
-  }
+	push(value) {
+		this.array.push(value);
+		return this.array;
+	}
 
-  pop() {
-    this.array.pop();
-    return this.array;
-  }
+	pop() {
+		this.array.pop();
+		return this.array;
+	}
 }
 
 const myStackArray2 = new StackArray2();
@@ -152,40 +152,40 @@ const myStackArray2 = new StackArray2();
 ////////////////////////////////////////////////////////////////
 
 class Queue {
-  constructor() {
-    this.first = null;
-    this.last = null;
-    this.length = 0;
-  }
+	constructor() {
+		this.first = null;
+		this.last = null;
+		this.length = 0;
+	}
 
-  peek() {
-    return this.first;
-  }
-  enqueue(value) {
-    const newNode = new Node(value);
+	peek() {
+		return this.first;
+	}
+	enqueue(value) {
+		const newNode = new Node(value);
 
-    if (this.length === 0) {
-      this.first = newNode;
-      this.last = newNode;
-    } else {
-      this.last.next = newNode;
-      this.last = newNode;
-    }
-    this.length++;
-    return this;
-  }
-  dequeue() {
-    if (!this.first) {
-      return 'Queue is empty';
-    }
+		if (this.length === 0) {
+			this.first = newNode;
+			this.last = newNode;
+		} else {
+			this.last.next = newNode;
+			this.last = newNode;
+		}
+		this.length++;
+		return this;
+	}
+	dequeue() {
+		if (!this.first) {
+			return 'Queue is empty';
+		}
 
-    this.first = this.first.next;
-    this.length--;
-    if (this.length === 0) {
-      this.last = null;
-    }
-    return this;
-  }
+		this.first = this.first.next;
+		this.length--;
+		if (this.length === 0) {
+			this.last = null;
+		}
+		return this;
+	}
 }
 
 const myQueue = new Queue();

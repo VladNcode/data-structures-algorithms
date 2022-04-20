@@ -1,6 +1,6 @@
 const addTo80 = function (n) {
-  console.log('long time');
-  return n + 80;
+	console.log('long time');
+	return n + 80;
 };
 
 // let cache = {};
@@ -15,16 +15,16 @@ const addTo80 = function (n) {
 // }
 
 function memoizedAddTo80Closures(n) {
-  let cache = {};
-  return function (n) {
-    if (n in cache) {
-      return cache[n];
-    } else {
-      console.log('long time');
-      cache[n] = n + 80;
-      return cache[n];
-    }
-  };
+	let cache = {};
+	return function (n) {
+		if (n in cache) {
+			return cache[n];
+		} else {
+			console.log('long time');
+			cache[n] = n + 80;
+			return cache[n];
+		}
+	};
 }
 
 const memoized = memoizedAddTo80Closures();
